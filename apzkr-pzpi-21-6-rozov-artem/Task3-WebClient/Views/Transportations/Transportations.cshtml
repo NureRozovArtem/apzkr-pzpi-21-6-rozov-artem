@@ -1,0 +1,71 @@
+﻿@using VehiclesTrackingSystem.Models
+
+@model List<Transportation>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Перелік перевезень</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="/Drivers/Page">Водії</a>
+        <a href="/Vehicles/Page">Автомобілі</a>
+        <a href="/Routes/Page">Шляхи</a>
+        <a href="/Transportations/Page/user/@ViewData["UserId"]">Перевезення</a>
+    </div>
+
+    <h1>Перелік транспортних засобів</h1>
+
+    <table id="transportationsTable">
+        <thead>
+            <tr>
+                <th>ID транспорту</th>
+                <th>Назва транспорту</th>
+                <th>Тип транспорту</th>
+                <th>Дата початку</th>
+                <th>Дата закінчення</th>
+                <th>Користувач ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var transportation in Model)
+            {
+                <tr id="@transportation.TransportationId" ondblclick="deleteTransportation(@transportation.TransportationId)">
+                    <td>@transportation.TransportationId</td>
+                    <td>@transportation.VehicleId</td>
+                    <td>@transportation.UserId</td>
+                    <td>@transportation.DriverId</td>
+                    <td>@transportation.RouteId</td>
+                    <td>@transportation.StartTime</td>
+                    <td>@transportation.EndTime</td>
+                    <td>@transportation.CargoDescription</td>
+                    <td>@transportation.CargoWeight</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button onclick="location.href='/Transportations/AddTransportation'">Додати новий транспорт</button>
+
+    <script>
+        function deleteTransportation(transportationId) {
+            var confirmation = confirm("Ви впевнені, що бажаєте видалити цей транспорт?");
+            if (confirmation) {
+                fetch('/api/Transportations/' + transportationId, {
+                    method: 'DELETE'
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            document.getElementById(transportationId).remove();
+                        } else {
+                            alert('Помилка при видалені транспорту.' + response.status);
+                        }
+                    })
+                    .catch(error => console.error('Помилка:', error));
+            }
+        }
+    </script>
+</body>
+</html>

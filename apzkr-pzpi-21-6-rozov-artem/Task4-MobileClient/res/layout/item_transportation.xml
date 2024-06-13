@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/grey"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvTransportationId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_marginVertical="5dp"
+        android:text="Transportation ID" />
+
+    <TextView
+        android:id="@+id/tvTransportationDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_marginVertical="5dp"
+        android:text="Transportation Details" />
+
+    <TextView
+        android:id="@+id/tvTransportationVehicle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_marginVertical="5dp"
+        android:text="VehicleId" />
+
+    <TextView
+        android:id="@+id/tvTransportationDriver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_marginVertical="5dp"
+        android:text="DriverId" />
+
+    <TextView
+        android:id="@+id/tvTransportationRoute"
+        android:layout_width="wrap_content"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:layout_marginVertical="5dp"
+        android:text="RouteId" />
+
+    <TextView
+        android:id="@+id/tvTransportationWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_marginVertical="5dp"
+        android:text="Cargo weight" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:orientation="vertical"
+        android:background="@color/white"/>
+
+</LinearLayout>

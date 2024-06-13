@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Додати водія</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Додати нового водія</h1>
+
+    <form id="addDriverForm">
+        <label for="fullName">ПІБ:</label><br>
+        <input type="text" id="fullName" name="fullName"><br><br>
+
+        <label for="dateOfBirth">Дата народження:</label><br>
+        <input type="date" id="dateOfBirth" name="dateOfBirth"><br><br>
+
+        <label for="licenseNumber">Номер водійського посвідчення:</label><br>
+        <input type="text" id="licenseNumber" name="licenseNumber"><br><br>
+
+        <label for="expirationDate">Дата закінчення дії водійскього:</label><br>
+        <input type="date" id="expirationDate" name="expirationDate"><br><br>
+
+        <label for="contactNumber">Контактный номер телефону:</label><br>
+        <input type="text" id="contactNumber" name="contactNumber"><br><br>
+
+        <input type="submit" value="Додати">
+    </form>
+
+    <script>
+        document.getElementById('addDriverForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var formData = new FormData(this);
+            var jsonObject = {};
+
+            formData.forEach(function (value, key) {
+                jsonObject[key] = value;
+            });
+
+            fetch('/api/DriversApi', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(jsonObject)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Водія успішно додано.');
+                        window.location.href = '/Drivers/Page';
+                    } else {
+                        alert('Помилка при додаванні водія.' + response.status);
+                    }
+                })
+                .catch(error => console.error('Помилка:', error));
+        });
+    </script>
+</body>
+</html>

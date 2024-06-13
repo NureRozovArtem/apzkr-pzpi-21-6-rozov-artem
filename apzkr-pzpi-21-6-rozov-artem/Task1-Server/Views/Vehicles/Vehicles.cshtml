@@ -1,0 +1,85 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using VehiclesTrackingSystem.Models
+
+@model List<Vehicle>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Перелік транспортних засобів</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="/Drivers/Page">Водії</a>
+        <a href="/Vehicles/Page">Автомобілі</a>
+        <a href="/Routes/Page">Шляхи</a>
+        <a href="/Transportations/Page/user/@ViewData["UserId"]">Перевезення</a>
+    </div>
+
+    <h1>Перелік транспортних засобів</h1>
+
+    <table id="vehiclesTable">
+        <thead>
+            <tr>
+                <th>Авто id</th>
+                <th>Номер авто</th>
+                <th>Тип авто</th>
+                <th>Марка</th>
+                <th>Модель</th>
+                <th>Рік випуску авто</th>
+                <th>Номер власника</th>
+                <th>Вага з заводу</th>
+                <th>Поточна вага</th>
+                <th>Місцезнаходження</th>
+                <th>Загальний обсяг баку</th>
+                <th>Поточний обсяг баку</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vehicle in Model)
+            {
+                <tr id="@vehicle.VehicleId" ondblclick="deleteVehicle(@vehicle.VehicleId)">
+                    <td>@vehicle.VehicleId</td>
+                    <td>@vehicle.VehicleNumber</td>
+                    <td>@vehicle.VehicleType</td>
+                    <td>@vehicle.Manufacturer</td>
+                    <td>@vehicle.Model</td>
+                    <td>@vehicle.YearOfManufacture</td>
+                    <td>@vehicle.OwnerId</td>
+                    <td>@vehicle.FactoryWeight</td>
+                    <td>@vehicle.CurrentWeight</td>
+                    <td>@vehicle.Location</td>
+                    <td>@vehicle.TankCapacity</td>
+                    <td>@vehicle.CurrentFuelLevel</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button onclick="location.href='/Vehicles/AddVehicle'">Додати новий транспортний засіб</button>
+
+    <script>
+        function deleteVehicle(vehicleId) {
+            var confirmation = confirm("Ви впевнені, що бажаєте видалити цей транспортний засіб?");
+            if (confirmation) {
+                fetch('/Vehicles/DeleteVehicle/' + vehicleId, {
+                    method: 'DELETE'
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            document.getElementById(vehicleId).remove();
+                        } else {
+                            alert('Помилка при видаленні транспортного засобу.' + response.status)
+                        }
+                    })
+                    .catch(error => console.error('Помилка:', error));
+            }
+        }
+    </script>
+</body>
+</html>

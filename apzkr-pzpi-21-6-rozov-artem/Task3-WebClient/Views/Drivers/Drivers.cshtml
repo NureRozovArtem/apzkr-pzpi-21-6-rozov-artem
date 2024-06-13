@@ -1,0 +1,68 @@
+﻿@using VehiclesTrackingSystem.Models
+
+@model List<Driver>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Перелік водіїв</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="/Drivers/Page">Водії</a>
+        <a href="/Vehicles/Page">Автомобілі</a>
+        <a href="/Routes/Page">Шляхи</a>
+        <a href="/Transportations/Page/user/@ViewData["UserId"]">Перевезення</a>
+    </div>
+
+    <h1>Перелік водіїв</h1>
+
+    <table id="driversTable">
+        <thead>
+            <tr>
+                <th>Номер водія</th>
+                <th>ПІБ</th>
+                <th>Дата народження</th>
+                <th>Номер водійського</th>
+                <th>Дата кінця водійського</th>
+                <th>Контактний телефон</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var driver in Model)
+            {
+                <tr id="@driver.DriverId" ondblclick="deleteDriver(@driver.DriverId)">
+                    <td>@driver.DriverId</td>
+                    <td>@driver.FullName</td>
+                    <td>@driver.DateOfBirth</td>
+                    <td>@driver.LicenseNumber</td>
+                    <td>@driver.ExpirationDate</td>
+                    <td>@driver.ContactNumber</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button onclick="location.href='/Drivers/AddDriver'">Додати нового водія</button>
+
+    <script>
+        function deleteDriver(driverId) {
+            var confirmation = confirm("Ви впевнені, що бажаєте видалити цього водія?");
+            if (confirmation) {
+                fetch('/api/DriversApi/' + driverId, {
+                    method: 'DELETE'
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            document.getElementById(driverId).remove();
+                        } else {
+                            alert('Помилка при видалені водія.' + response.status)
+                        }
+                    })
+                    .catch(error => console.error('Помилка:', error));
+            }
+        }
+    </script>
+</body>
+</html>

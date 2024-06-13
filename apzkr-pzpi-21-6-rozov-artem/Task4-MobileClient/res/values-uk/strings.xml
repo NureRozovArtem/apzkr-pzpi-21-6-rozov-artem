@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">VehiclesTrackingSystemMobile</string>
+    <string name="loginText">Вхід в акаунт</string>
+    <string name="loginButtonText">Увійти</string>
+    <string name="DontHaveAnAccount">Ще не має акаунта? Реєсстрація</string>
+    <string name="RegistrationText">Реєстрація</string>
+    <string name="RegistrationButton">Зареєструватися</string>
+    <string name="AlreadyHaveAnAccount">Вже є акаунт? Увійти!</string>
+    <string name="TransportationNum">Перевезення # </string>
+    <string name="CargoDesc">Опис вантажу: </string>
+    <string name="CargoWeight">Вага вантажу: </string>
+    <string name="Vehicle">Автомобіль: </string>
+    <string name="Number">Номер: </string>
+    <string name="Manufacturer"> Марка: </string>
+    <string name="Model"> Модель: </string>
+    <string name="Driver"> Водій: </string>
+    <string name="ContactNumber"> Номер телефону: </string>
+    <string name="Route">Шлях: </string>
+    <string name="From"> Звідки: </string>
+    <string name="To"> Куди: </string>
+
+    <string-array name="spinner_items">
+        <item>Адміністратор</item>
+        <item>Водій</item>
+        <item>Клієнт</item>
+    </string-array>
+</resources>

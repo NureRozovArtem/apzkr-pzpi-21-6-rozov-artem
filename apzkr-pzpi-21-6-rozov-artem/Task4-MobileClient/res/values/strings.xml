@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">VehiclesTrackingSystemMobile</string>
+    <string name="loginText">Log in your account</string>
+    <string name="loginButtonText">Log in</string>
+    <string name="DontHaveAnAccount">Don`t have an account? Register!</string>
+    <string name="RegistrationText">Register a new account</string>
+    <string name="RegistrationButton">Register</string>
+    <string name="AlreadyHaveAnAccount">Already have an account? Log in!</string>
+    <string name="TransportationNum">Transportation # </string>
+    <string name="CargoDesc">Cargo description: </string>
+    <string name="CargoWeight">Cargo weight: </string>
+    <string name="Vehicle">Vehicle: </string>
+    <string name="Number"> Number: </string>
+    <string name="Manufacturer"> Manufacturer: </string>
+    <string name="Model"> Model: </string>
+    <string name="Driver"> Driver: </string>
+    <string name="ContactNumber"> Contact number: </string>
+    <string name="Route">Route: </string>
+    <string name="From"> From: </string>
+    <string name="To"> To: </string>
+
+
+    <string-array name="spinner_items">
+        <item>Admin</item>
+        <item>Driver</item>
+        <item>Client</item>
+    </string-array>
+</resources>
